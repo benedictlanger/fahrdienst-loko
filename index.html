@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahrdienste Loko – Krankenfahrten & Transfers bundesweit</title>
+  <meta name="description" content="Fahrdienste Loko aus Oberndorf am Lech: Krankenfahrten mit Kassenabrechnung, Dialyse-, Chemo- und Rehafahrten, Flughafentransfer, Kurierfahrten – bundesweit, zu Festpreisen.">
+  <style>
+    :root {
+      --blau-dunkel: #1e3a5f;
+      --blau: #3b6ea5;
+      --blau-hell: #7fa7d1;
+      --blau-zart: #e8f0f8;
+      --text: #1f2933;
+      --text-hell: #52606d;
+      --weiss: #ffffff;
+      --metall: linear-gradient(135deg, #5b8bc4 0%, #9cc0e3 45%, #6f9bcf 70%, #4a78ad 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--weiss);
+    }
+    a { color: var(--blau); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Navigation */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dde6ef;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-size: 1.25rem; color: var(--blau-dunkel); text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: var(--blau); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; }
+    .nav-links a:hover { color: var(--blau); }
+
+    /* Hero */
+    .hero {
+      background: var(--metall);
+      color: var(--weiss);
+      padding: 90px 0 100px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.2; margin-bottom: 16px; text-shadow: 0 2px 8px rgba(30,58,95,0.25); }
+    .hero p { font-size: 1.2rem; max-width: 680px; margin: 0 auto 32px; opacity: 0.95; }
+    .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 14px 28px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 1.05rem;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+    .btn-primary { background: var(--blau-dunkel); color: var(--weiss); }
+    .btn-whatsapp { background: #25d366; color: var(--weiss); }
+    .btn-outline { background: var(--weiss); color: var(--blau-dunkel); }
+
+    /* Sektionen */
+    section { padding: 80px 0; }
+    .section-title { text-align: center; font-size: 2rem; color: var(--blau-dunkel); margin-bottom: 12px; }
+    .section-sub { text-align: center; color: var(--text-hell); max-width: 640px; margin: 0 auto 48px; }
+
+    /* Vorteile */
+    .vorteile { background: var(--blau-zart); padding: 40px 0; }
+    .vorteile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+    .vorteil strong { display: block; font-size: 1.1rem; color: var(--blau-dunkel); }
+    .vorteil span { color: var(--text-hell); font-size: 0.95rem; }
+    .icon {
+      width: 48px; height: 48px; margin: 0 auto 10px;
+      background: var(--metall); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .icon svg { width: 24px; height: 24px; stroke: var(--weiss); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Leistungen */
+    .leistungen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+    .karte {
+      border: 1px solid #dde6ef; border-radius: 12px; padding: 26px;
+      background: var(--weiss); transition: box-shadow .2s, transform .2s;
+      border-top: 4px solid var(--blau-hell);
+    }
+    .karte:hover { box-shadow: 0 10px 28px rgba(59,110,165,0.15); transform: translateY(-3px); }
+    .karte h3 { color: var(--blau-dunkel); margin-bottom: 8px; font-size: 1.15rem; }
+    .karte p { color: var(--text-hell); font-size: 0.97rem; }
+
+    /* Über uns */
+    .ueber { background: var(--blau-zart); }
+    .ueber-text { max-width: 760px; margin: 0 auto; font-size: 1.1rem; text-align: center; }
+    .ueber-text p + p { margin-top: 16px; }
+
+    /* Kontakt */
+    .kontakt-box {
+      max-width: 720px; margin: 0 auto; background: var(--metall); color: var(--weiss);
+      border-radius: 16px; padding: 48px 32px; text-align: center;
+      box-shadow: 0 14px 40px rgba(59,110,165,0.25);
+    }
+    .kontakt-box h2 { font-size: 1.9rem; margin-bottom: 8px; }
+    .kontakt-box .person { font-size: 1.1rem; margin-bottom: 24px; opacity: 0.95; }
+    .kontakt-zeile { font-size: 1.15rem; margin: 8px 0; }
+    .kontakt-zeile a { color: var(--weiss); font-weight: 600; text-decoration: none; }
+    .kontakt-zeile a:hover { text-decoration: underline; }
+    .zeiten { margin: 22px 0 28px; font-size: 1rem; opacity: 0.95; }
+
+    /* Footer */
+    footer { background: var(--blau-dunkel); color: #c7d6e6; padding: 28px 0; font-size: 0.92rem; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer a { color: #c7d6e6; text-decoration: none; margin-left: 18px; }
+    footer a:hover { color: var(--weiss); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 64px 0 72px; }
+      section { padding: 60px 0; }
+      footer a { margin-left: 0; margin-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">Fahrdienste <span>Loko</span></a>
+      <ul class="nav-links">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Sicher ankommen –<br>mit Fahrdienste Loko</h1>
+      <p>Krankenfahrten mit Kassenabrechnung, Transfers und Sonderfahrten – bundesweit, zuverlässig und zu fairen Festpreisen.</p>
+      <div class="buttons">
+        <a href="tel:+4916098020200" class="btn btn-primary">📞 Jetzt anrufen</a>
+        <a href="https://wa.me/4916098020200" class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp schreiben</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="vorteile">
+    <div class="container vorteile-grid">
+      <div class="vorteil">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <strong>Kassenzulassung</strong>
+        <span>Abrechnung direkt mit Ihrer Krankenkasse</span>
+      </div>
+      <div class="vorteil">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <strong>Festpreise</strong>
+        <span>Transparent – ohne böse Überraschungen</span>
+      </div>
+      <div class="vorteil">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <strong>Bundesweit</strong>
+        <span>Von Oberndorf am Lech in ganz Deutschland</span>
+      </div>
+      <div class="vorteil">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <strong>24/7 nach Vereinbarung</strong>
+        <span>Fahrten rund um die Uhr möglich</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="leistungen">
+    <div class="container">
+      <h2 class="section-title">Unsere Leistungen</h2>
+      <p class="section-sub">Ob regelmäßige Behandlung oder einmalige Fahrt – wir bringen Sie sicher und pünktlich ans Ziel.</p>
+      <div class="leistungen-grid">
+        <div class="karte">
+          <h3>Krankenfahrten</h3>
+          <p>Sitzend und komfortabel – auf Wunsch mit direkter Abrechnung über Ihre Krankenkasse.</p>
+        </div>
+        <div class="karte">
+          <h3>Dialyse-, Chemo- & Rehafahrten</h3>
+          <p>Zuverlässige Begleitung zu regelmäßigen Behandlungsterminen – pünktlich und einfühlsam.</p>
+        </div>
+        <div class="karte">
+          <h3>Entlassungs- & Arztfahrten</h3>
+          <p>Vom Krankenhaus nach Hause oder zum Facharzt – stressfrei und ohne Wartezeit.</p>
+        </div>
+        <div class="karte">
+          <h3>Begleitservice</h3>
+          <p>Auf Wunsch begleiten wir Sie über die Fahrt hinaus – individuell nach Absprache.</p>
+        </div>
+        <div class="karte">
+          <h3>Flughafentransfer & Fernfahrten</h3>
+          <p>Entspannt zum Flughafen oder quer durch Deutschland – mit Gepäck und ohne Umsteigen.</p>
+        </div>
+        <div class="karte">
+          <h3>Messe-, Hotel- & Bahnhofsfahrten</h3>
+          <p>Der bequeme Transfer für Geschäftsreisende und Gäste – pünktlich vor Ort.</p>
+        </div>
+        <div class="karte">
+          <h3>Kurier- & Sonderfahrten</h3>
+          <p>Eilige Dokumente, Waren oder besondere Aufträge – schnell und sicher zugestellt.</p>
+        </div>
+        <div class="karte">
+          <h3>Individuelle Fahrten</h3>
+          <p>Ihr Anliegen passt in keine Schublade? Sprechen Sie uns an – wir finden eine Lösung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ueber-uns" class="ueber">
+    <div class="container">
+      <h2 class="section-title">Über uns</h2>
+      <div class="ueber-text">
+        <p>Fahrdienste Loko ist in Oberndorf am Lech in Bayern zu Hause – und von hier aus bundesweit für Sie unterwegs.</p>
+        <p>Bei uns steht der Mensch im Mittelpunkt. Ein freundlicher und respektvoller Umgang ist für uns selbstverständlich – genauso wie Pünktlichkeit, Zuverlässigkeit und eine sichere, angenehme Fahrt. Damit Sie sich vom Einsteigen bis zur Ankunft gut aufgehoben fühlen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="kontakt-box">
+        <h2>Fahrt anfragen</h2>
+        <p class="person">Ihr Ansprechpartner: Konrad Loderer</p>
+        <p class="kontakt-zeile">Telefon & WhatsApp: <a href="tel:+4916098020200">0160 98020200</a></p>
+        <p class="kontakt-zeile">E-Mail: <a href="mailto:kontakt@dienstleistungen-loko.de">kontakt@dienstleistungen-loko.de</a></p>
+        <p class="zeiten">Telefonisch erreichbar: täglich 08:00 – 20:00 Uhr<br>Fahrten rund um die Uhr nach Vereinbarung</p>
+        <div class="buttons">
+          <a href="tel:+4916098020200" class="btn btn-outline">📞 Anrufen</a>
+          <a href="https://wa.me/4916098020200" class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Fahrdienste Loko · Oberndorf am Lech</span>
+      <span>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
